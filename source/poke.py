@@ -10,6 +10,8 @@ def main():
     TYPE2_COL = 3
     SUM_COL = 13
 
+    HYPHEN = '-'
+
     with open('../dataset/pokemon_status.csv') as f:
         reader = csv.reader(f)
         csv_list = [i for i in reader]
@@ -25,6 +27,10 @@ def main():
     min_poke_list = []
 
     for index_row, row in enumerate(csv_list):
+        # メガシンカを省く
+        if HYPHEN in csv_list[index_row][0]:
+            continue
+
         for index_col, col in enumerate(row):
             # タイプ集計処理
             if index_col == TYPE1_COL:
